@@ -462,8 +462,6 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
    ORIGAMI OVERRIDES - GHI ĐÈ PHONG CÁCH GIẤY XẾP
 ================================================================== */
 :root {
-  --rmd: 0px !important;
-  --rlg: 0px !important;
   --sh-sm: 2px 2px 0px rgba(107, 122, 46, 0.15) !important;
   --sh: 4px 4px 0px rgba(107, 122, 46, 0.2), inset 1px 1px 0 rgba(255, 255, 255, 0.8) !important;
   --sh-lg: 6px 6px 0px rgba(107, 122, 46, 0.25) !important;
@@ -480,20 +478,6 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
 .mc, .fcard, .btn, .tab-btn, .btn-sub, .toast, input, textarea, select, .tabs {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  border-radius: 0 !important;
-}
-
-/* Hiệu ứng cắt mép giấy cho Menu Tabs */
-.tab-btn {
-  clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%) !important;
-  margin-left: -12px !important;
-  padding: 8px 24px !important;
-}
-.tab-btn:first-child { margin-left: 0 !important; }
-.tab-btn.active {
-  box-shadow: none !important;
-  transform: scale(1.05) !important;
-  border-bottom: 2px solid var(--gold) !important;
 }
 
 /* Hiệu ứng nhấc khối giấy khi di chuột */
@@ -510,6 +494,15 @@ body, [data-theme="light"] body {
   background-size: 20px 20px !important;
   background-position: 0 0, 10px 10px !important;
 }
+/* ══ TĂNG ĐỘ BO TRÒN CHO MỀM MẠI HƠN ══ */
+:root{--rmd:14px;--rlg:20px}
+[data-theme="dark"]{--rmd:14px;--rlg:20px}
+.fcard,.chart-card,.rpt-card,.tw,.chat-wrap{border-radius:22px !important}
+.mc{border-radius:18px !important}
+.modal-box{border-radius:24px !important}
+.btn,.theme-btn{border-radius:24px !important}
+.btn-sub,.btn-cancel{border-radius:16px !important}
+input,textarea,select{border-radius:14px !important}
 </style>
 </head>
 <body>
