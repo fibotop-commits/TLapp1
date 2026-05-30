@@ -459,68 +459,80 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
   color: var(--gold); text-shadow: 0 1px 2px rgba(0,0,0,0.9);
 }   
 /* ══════════════════════════════════════════════════
-   TACTILE ATMOSPHERE — TÔNG XANH Ô LIU THƯƠNG HIỆU
-   Nền tối · Gradient ô liu · Kính mờ · Editorial
+   TACTILE ATMOSPHERE — ĐÚNG MÀU ẢNH MẪU
+   Gradient vàng→teal · Accent xanh tím · Kính mờ
 ══════════════════════════════════════════════════ */
 
-/* 1. Bo góc tròn lớn kiểu mẫu */
+/* 1. Accent xanh dương tím + bo góc lớn */
 :root{
   --rmd:14px; --rlg:20px;
+  --accent:#5B6CF0;        /* xanh dương tím nút chính */
+  --accent-dark:#4453d4;
+}
+[data-theme="dark"]{
+  --indigo:#5B6CF0;        /* đồng bộ nút AI/ship sang accent mẫu */
 }
 
-/* 2. Nền tối + gradient ánh ô liu (thay gradient vàng-xanh của mẫu) */
+/* 2. Nền gradient vàng nghệ → xanh teal (giống mẫu) */
 [data-theme="dark"] body{
-  background-color:#0c0e07;
+  background-color:#0a0f0d;
   background-image:
-    radial-gradient(ellipse 80% 60% at 15% 30%, rgba(107,122,46,.22), transparent 60%),
-    radial-gradient(ellipse 70% 50% at 85% 75%, rgba(74,94,28,.18), transparent 60%),
-    radial-gradient(circle at 50% 50%, rgba(138,156,58,.06), transparent 70%) !important;
-  background-size:100% 100% !important;
+    linear-gradient(135deg,
+      #d9a521 0%,
+      #b8941f 18%,
+      #4a6b4a 42%,
+      #1f4a47 65%,
+      #14302e 100%) !important;
+  background-size:cover !important;
   background-attachment:fixed !important;
 }
 
-/* 3. Header editorial — tiêu đề lớn, kính mờ */
+/* 3. Header — thẻ kính mờ xám đen nổi trên gradient */
 .hdr{
-  background:rgba(22,25,9,.55) !important;
-  backdrop-filter:blur(24px) saturate(160%);
-  -webkit-backdrop-filter:blur(24px) saturate(160%);
-  border:1px solid rgba(138,156,58,.18);
-  border-radius:22px;
+  background:rgba(15,20,18,.55) !important;
+  backdrop-filter:blur(28px) saturate(140%);
+  -webkit-backdrop-filter:blur(28px) saturate(140%);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;
   margin:.75rem 0 1.25rem !important;
 }
-.hdr h1{font-size:clamp(20px,4.5vw,30px) !important;letter-spacing:-.5px}
+.hdr h1{font-size:clamp(20px,4.5vw,30px) !important;letter-spacing:-.5px;color:#fff !important}
+.hdr-sub{color:rgba(255,255,255,.65) !important}
 
-/* 4. Thẻ metric — kính mờ trong suốt, nổi trên nền */
+/* 4. Thẻ metric — kính mờ xám đen, chữ trắng */
 .mc{
-  background:rgba(255,255,255,.04) !important;
-  backdrop-filter:blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter:blur(20px) saturate(150%) !important;
+  background:rgba(20,26,24,.5) !important;
+  backdrop-filter:blur(24px) saturate(140%) !important;
+  -webkit-backdrop-filter:blur(24px) saturate(140%) !important;
   border:1px solid rgba(255,255,255,.08) !important;
-  border-radius:18px !important;
-  box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.06) !important;
+  border-radius:20px !important;
+  box-shadow:0 8px 32px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06) !important;
 }
+.mc-val{color:#fff !important}
+.mc-lbl{color:rgba(255,255,255,.55) !important}
 .mc:hover{
   transform:translateY(-4px) !important;
-  border-color:rgba(138,156,58,.4) !important;
-  box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.1) !important;
+  border-color:rgba(255,255,255,.2) !important;
+  box-shadow:0 16px 44px rgba(0,0,0,.45) !important;
 }
 
-/* 5. Form card, chart card, report card — kính mờ */
+/* 5. Form card, chart, report, bảng, chat — kính mờ xám đen */
 .fcard,.chart-card,.rpt-card,.tw,.chat-wrap{
-  background:rgba(22,25,9,.5) !important;
-  backdrop-filter:blur(20px) saturate(150%);
-  -webkit-backdrop-filter:blur(20px) saturate(150%);
-  border:1px solid rgba(138,156,58,.15) !important;
-  border-radius:20px !important;
-  box-shadow:0 8px 32px rgba(0,0,0,.28) !important;
+  background:rgba(15,20,18,.52) !important;
+  backdrop-filter:blur(24px) saturate(140%);
+  -webkit-backdrop-filter:blur(24px) saturate(140%);
+  border:1px solid rgba(255,255,255,.08) !important;
+  border-radius:22px !important;
+  box-shadow:0 8px 32px rgba(0,0,0,.3) !important;
 }
+.ftitle,.rpt-card h3,.chart-card h3{color:#fff !important}
 
-/* 6. Tabs ngang (giữ vị trí) — phong cách kính mờ tối */
+/* 6. Tabs ngang — kính mờ, active màu accent xanh tím */
 .tabs{
-  background:rgba(22,25,9,.5) !important;
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border:1px solid rgba(138,156,58,.15) !important;
+  background:rgba(15,20,18,.5) !important;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.08) !important;
   border-radius:30px !important;
 }
 .tab-btn{
@@ -528,29 +540,49 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
   clip-path:none !important;
   margin-left:2px !important;
   padding:8px 16px !important;
+  color:rgba(255,255,255,.6) !important;
 }
 .tab-btn.active{
-  background:rgba(138,156,58,.18) !important;
-  color:var(--gold-dark) !important;
-  box-shadow:0 0 0 1px rgba(138,156,58,.35),0 0 16px rgba(138,156,58,.2) !important;
+  background:var(--accent) !important;
+  color:#fff !important;
+  box-shadow:0 4px 16px rgba(91,108,240,.45) !important;
   transform:none !important;
 }
+.tab-btn:hover:not(.active){color:#fff !important;background:rgba(255,255,255,.06) !important}
 
 /* 7. Input, select, textarea — nền tối trong suốt */
 input,textarea,select{
-  background:rgba(255,255,255,.04) !important;
-  border:1.5px solid rgba(138,156,58,.2) !important;
+  background:rgba(255,255,255,.05) !important;
+  border:1.5px solid rgba(255,255,255,.12) !important;
   border-radius:12px !important;
+  color:#fff !important;
+}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--accent) !important;
+  box-shadow:0 0 0 3px rgba(91,108,240,.25) !important;
 }
 
-/* 8. Nút bấm — bo tròn lại */
-.btn,.btn-sub,.btn-cancel,.theme-btn,.m-confirm,.m-cancel{
+/* 8. Nút chính — màu accent xanh dương tím như mẫu */
+.btn-sub{
+  background:var(--accent) !important;
+  color:#fff !important;
   border-radius:14px !important;
+  box-shadow:0 4px 16px rgba(91,108,240,.4) !important;
 }
-.modal-box{border-radius:22px !important}
+.btn-sub:hover{transform:translateY(-2px) !important;background:var(--accent-dark) !important}
+.btn-sub.orange{background:#E67E22 !important;box-shadow:0 4px 16px rgba(230,126,34,.4) !important}
+.btn-sub.ai{background:var(--accent) !important}
 
-/* 9. Khôi phục hiệu ứng nhấc thẻ mượt (ghi đè kiểu giấy xếp đã xóa) */
-.btn-sub:hover{transform:translateY(-2px) !important}
+.btn,.btn-cancel,.theme-btn,.m-confirm,.m-cancel{border-radius:14px !important}
+.btn-ol{background:rgba(255,255,255,.06) !important;border:1px solid rgba(255,255,255,.14) !important;color:#fff !important}
+.btn-ol:hover{background:rgba(255,255,255,.12) !important}
+.modal-box{border-radius:24px !important;background:rgba(20,26,24,.92) !important;backdrop-filter:blur(24px)}
+
+/* 9. Bảng — nền tối trong suốt, chữ sáng */
+th{background:rgba(0,0,0,.3) !important;color:rgba(255,255,255,.85) !important}
+td{color:rgba(255,255,255,.8) !important}
+
+/* 10. Khử hiệu ứng giấy xếp còn sót */
 .fcard:hover{transform:none !important}
 </style>
 </head>
