@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="light">
+<html lang="vi" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content, viewport-fit=cover">
@@ -458,58 +458,100 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
 [data-theme="dark"] .gl-prog-txt {
   color: var(--gold); text-shadow: 0 1px 2px rgba(0,0,0,0.9);
 }   
-/* ==================================================================
-   ORIGAMI OVERRIDES - GHI ĐÈ PHONG CÁCH GIẤY XẾP
-================================================================== */
-:root {
-  --rmd: 0px !important;
-  --rlg: 0px !important;
-  --sh-sm: 2px 2px 0px rgba(107, 122, 46, 0.15) !important;
-  --sh: 4px 4px 0px rgba(107, 122, 46, 0.2), inset 1px 1px 0 rgba(255, 255, 255, 0.8) !important;
-  --sh-lg: 6px 6px 0px rgba(107, 122, 46, 0.25) !important;
-  --sh-xl: 12px 12px 0px rgba(0, 0, 0, 0.15) !important;
-}
-[data-theme="dark"] {
-  --sh-sm: 2px 2px 0px rgba(0, 0, 0, 0.4) !important;
-  --sh: 4px 4px 0px rgba(0, 0, 0, 0.5), inset 1px 1px 0 rgba(255, 255, 255, 0.05) !important;
-  --sh-lg: 6px 6px 0px rgba(0, 0, 0, 0.6) !important;
-  --sh-xl: 12px 12px 0px rgba(0, 0, 0, 0.8) !important;
+/* ══════════════════════════════════════════════════
+   TACTILE ATMOSPHERE — TÔNG XANH Ô LIU THƯƠNG HIỆU
+   Nền tối · Gradient ô liu · Kính mờ · Editorial
+══════════════════════════════════════════════════ */
+
+/* 1. Bo góc tròn lớn kiểu mẫu */
+:root{
+  --rmd:14px; --rlg:20px;
 }
 
-/* Xóa kính mờ và làm vuông vức 100% */
-.mc, .fcard, .btn, .tab-btn, .btn-sub, .toast, input, textarea, select, .tabs {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-radius: 0 !important;
+/* 2. Nền tối + gradient ánh ô liu (thay gradient vàng-xanh của mẫu) */
+[data-theme="dark"] body{
+  background-color:#0c0e07;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 15% 30%, rgba(107,122,46,.22), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 75%, rgba(74,94,28,.18), transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(138,156,58,.06), transparent 70%) !important;
+  background-size:100% 100% !important;
+  background-attachment:fixed !important;
 }
 
-/* Hiệu ứng cắt mép giấy cho Menu Tabs */
-.tab-btn {
-  clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%) !important;
-  margin-left: -12px !important;
-  padding: 8px 24px !important;
+/* 3. Header editorial — tiêu đề lớn, kính mờ */
+.hdr{
+  background:rgba(22,25,9,.55) !important;
+  backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  border:1px solid rgba(138,156,58,.18);
+  border-radius:22px;
+  margin:.75rem 0 1.25rem !important;
 }
-.tab-btn:first-child { margin-left: 0 !important; }
-.tab-btn.active {
-  box-shadow: none !important;
-  transform: scale(1.05) !important;
-  border-bottom: 2px solid var(--gold) !important;
+.hdr h1{font-size:clamp(20px,4.5vw,30px) !important;letter-spacing:-.5px}
+
+/* 4. Thẻ metric — kính mờ trong suốt, nổi trên nền */
+.mc{
+  background:rgba(255,255,255,.04) !important;
+  backdrop-filter:blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(150%) !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  border-radius:18px !important;
+  box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+.mc:hover{
+  transform:translateY(-4px) !important;
+  border-color:rgba(138,156,58,.4) !important;
+  box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.1) !important;
 }
 
-/* Hiệu ứng nhấc khối giấy khi di chuột */
-.btn-sub:hover, .mc:hover, .fcard:hover {
-  transform: translate(-2px, -2px) !important;
-  box-shadow: 4px 4px 0px rgba(107, 122, 46, 0.2) !important;
+/* 5. Form card, chart card, report card — kính mờ */
+.fcard,.chart-card,.rpt-card,.tw,.chat-wrap{
+  background:rgba(22,25,9,.5) !important;
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  border:1px solid rgba(138,156,58,.15) !important;
+  border-radius:20px !important;
+  box-shadow:0 8px 32px rgba(0,0,0,.28) !important;
 }
 
-/* Thay nền thành lưới Origami */
-body, [data-theme="light"] body {
-  background-image: 
-    linear-gradient(45deg, var(--dot) 25%, transparent 25%, transparent 75%, var(--dot) 75%, var(--dot)), 
-    linear-gradient(45deg, var(--dot) 25%, transparent 25%, transparent 75%, var(--dot) 75%, var(--dot)) !important;
-  background-size: 20px 20px !important;
-  background-position: 0 0, 10px 10px !important;
+/* 6. Tabs ngang (giữ vị trí) — phong cách kính mờ tối */
+.tabs{
+  background:rgba(22,25,9,.5) !important;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(138,156,58,.15) !important;
+  border-radius:30px !important;
 }
+.tab-btn{
+  border-radius:24px !important;
+  clip-path:none !important;
+  margin-left:2px !important;
+  padding:8px 16px !important;
+}
+.tab-btn.active{
+  background:rgba(138,156,58,.18) !important;
+  color:var(--gold-dark) !important;
+  box-shadow:0 0 0 1px rgba(138,156,58,.35),0 0 16px rgba(138,156,58,.2) !important;
+  transform:none !important;
+}
+
+/* 7. Input, select, textarea — nền tối trong suốt */
+input,textarea,select{
+  background:rgba(255,255,255,.04) !important;
+  border:1.5px solid rgba(138,156,58,.2) !important;
+  border-radius:12px !important;
+}
+
+/* 8. Nút bấm — bo tròn lại */
+.btn,.btn-sub,.btn-cancel,.theme-btn,.m-confirm,.m-cancel{
+  border-radius:14px !important;
+}
+.modal-box{border-radius:22px !important}
+
+/* 9. Khôi phục hiệu ứng nhấc thẻ mượt (ghi đè kiểu giấy xếp đã xóa) */
+.btn-sub:hover{transform:translateY(-2px) !important}
+.fcard:hover{transform:none !important}
 </style>
 </head>
 <body>
