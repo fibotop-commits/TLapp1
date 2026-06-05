@@ -1,5 +1,5 @@
-// Đổi version v3 để ép điện thoại tải lại
-const CACHE_NAME = 'toulouse-v3'; 
+// Đổi version v9 để ép điện thoại tải lại
+const CACHE_NAME = 'toulouse-v9';
 
 const ASSETS_TO_CACHE = [
   'index.html',

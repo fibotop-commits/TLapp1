@@ -10,6 +10,11 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Toulouse">
 <link rel="apple-touch-icon" href="icon.png">
+<!-- Bắt tay sớm với máy chủ API + CDN → dữ liệu & thư viện về nhanh hơn -->
+<link rel="preconnect" href="https://script.google.com" crossorigin>
+<link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+<link rel="dns-prefetch" href="https://script.google.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css"></noscript>
 <style>
@@ -27,7 +32,7 @@
   --card-bg:linear-gradient(145deg,#ffffff 0%,#f6faea 100%);
   --mc-bg:rgba(255,255,255,0.52);
   --hdr-bg:linear-gradient(160deg,#f7faf0 0%,#e6edcc 100%);
-  --tab-bg:#edf1de;--dot:rgba(107,122,46,.1);
+  --tab-bg:#edf1de;
   --rmd:10px;--rlg:14px;
   --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   --serif:Georgia,'Times New Roman',serif;
@@ -49,7 +54,7 @@
   --card-bg:linear-gradient(145deg,#1a1f0c 0%,#141809 100%);
   --mc-bg:rgba(22,25,9,0.55);
   --hdr-bg:linear-gradient(160deg,#171c09 0%,#0f1307 100%);
-  --tab-bg:#131709;--dot:rgba(107,122,46,.07);
+  --tab-bg:#131709;
   --sh-sm:0 1px 3px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.04);
   --sh:0 3px 10px rgba(0,0,0,.35),0 1px 3px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04),0 0 0 .5px rgba(107,122,46,.18);
   --sh-lg:0 8px 24px rgba(0,0,0,.45),0 2px 8px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.03),0 0 0 .5px rgba(107,122,46,.2);
@@ -80,10 +85,13 @@
 html{transition:background-color .3s,color .3s}
 body{
   font-family:var(--font);background-color:var(--cb);
-  background-image:conic-gradient(var(--dot) 90deg, transparent 90deg 180deg, var(--dot) 180deg 270deg, transparent 270deg);
-  background-size:42px 42px;color:var(--ct);min-height:100vh;
+  color:var(--ct);min-height:100vh;
   transition:background-color .3s,color .3s;
 }
+/* ══ NỀN MONOGRAM (chỉ hoạ tiết hoa & sao – KHÔNG có chữ LV) ══ */
+:root{--monogram:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='112' viewBox='0 0 112 112'%3E%3Cg fill='%236B7A2E' fill-opacity='0.11'%3E%3Ccircle cx='0' cy='0' r='4.0'/%3E%3Cpath d='M0 23.0 L5.0 28 L0 33.0 L-5.0 28 Z'/%3E%3Ccircle cx='0' cy='56' r='4.0'/%3E%3Cpath d='M0 79.0 L5.0 84 L0 89.0 L-5.0 84 Z'/%3E%3Ccircle cx='0' cy='112' r='4.0'/%3E%3Cpath d='M28 -5.0 L33.0 0 L28 5.0 L23.0 0 Z'/%3E%3Ccircle cx='28' cy='28' r='4.0'/%3E%3Cpath d='M28 51.0 L33.0 56 L28 61.0 L23.0 56 Z'/%3E%3Ccircle cx='28' cy='84' r='4.0'/%3E%3Cpath d='M28 107.0 L33.0 112 L28 117.0 L23.0 112 Z'/%3E%3Ccircle cx='56' cy='0' r='4.0'/%3E%3Cpath d='M56 23.0 L61.0 28 L56 33.0 L51.0 28 Z'/%3E%3Ccircle cx='56' cy='56' r='4.0'/%3E%3Cpath d='M56 79.0 L61.0 84 L56 89.0 L51.0 84 Z'/%3E%3Ccircle cx='56' cy='112' r='4.0'/%3E%3Cpath d='M84 -5.0 L89.0 0 L84 5.0 L79.0 0 Z'/%3E%3Ccircle cx='84' cy='28' r='4.0'/%3E%3Cpath d='M84 51.0 L89.0 56 L84 61.0 L79.0 56 Z'/%3E%3Ccircle cx='84' cy='84' r='4.0'/%3E%3Cpath d='M84 107.0 L89.0 112 L84 117.0 L79.0 112 Z'/%3E%3Ccircle cx='112' cy='0' r='4.0'/%3E%3Cpath d='M112 23.0 L117.0 28 L112 33.0 L107.0 28 Z'/%3E%3Ccircle cx='112' cy='56' r='4.0'/%3E%3Cpath d='M112 79.0 L117.0 84 L112 89.0 L107.0 84 Z'/%3E%3Ccircle cx='112' cy='112' r='4.0'/%3E%3C/g%3E%3C/svg%3E")}
+[data-theme="dark"]{--monogram:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='112' viewBox='0 0 112 112'%3E%3Cg fill='%23c9d49a' fill-opacity='0.10'%3E%3Ccircle cx='0' cy='0' r='4.0'/%3E%3Cpath d='M0 23.0 L5.0 28 L0 33.0 L-5.0 28 Z'/%3E%3Ccircle cx='0' cy='56' r='4.0'/%3E%3Cpath d='M0 79.0 L5.0 84 L0 89.0 L-5.0 84 Z'/%3E%3Ccircle cx='0' cy='112' r='4.0'/%3E%3Cpath d='M28 -5.0 L33.0 0 L28 5.0 L23.0 0 Z'/%3E%3Ccircle cx='28' cy='28' r='4.0'/%3E%3Cpath d='M28 51.0 L33.0 56 L28 61.0 L23.0 56 Z'/%3E%3Ccircle cx='28' cy='84' r='4.0'/%3E%3Cpath d='M28 107.0 L33.0 112 L28 117.0 L23.0 112 Z'/%3E%3Ccircle cx='56' cy='0' r='4.0'/%3E%3Cpath d='M56 23.0 L61.0 28 L56 33.0 L51.0 28 Z'/%3E%3Ccircle cx='56' cy='56' r='4.0'/%3E%3Cpath d='M56 79.0 L61.0 84 L56 89.0 L51.0 84 Z'/%3E%3Ccircle cx='56' cy='112' r='4.0'/%3E%3Cpath d='M84 -5.0 L89.0 0 L84 5.0 L79.0 0 Z'/%3E%3Ccircle cx='84' cy='28' r='4.0'/%3E%3Cpath d='M84 51.0 L89.0 56 L84 61.0 L79.0 56 Z'/%3E%3Ccircle cx='84' cy='84' r='4.0'/%3E%3Cpath d='M84 107.0 L89.0 112 L84 117.0 L79.0 112 Z'/%3E%3Ccircle cx='112' cy='0' r='4.0'/%3E%3Cpath d='M112 23.0 L117.0 28 L112 33.0 L107.0 28 Z'/%3E%3Ccircle cx='112' cy='56' r='4.0'/%3E%3Cpath d='M112 79.0 L117.0 84 L112 89.0 L107.0 84 Z'/%3E%3Ccircle cx='112' cy='112' r='4.0'/%3E%3C/g%3E%3C/svg%3E")}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:var(--monogram);background-size:112px 112px;background-position:center}
 .wrap{max-width:1140px;margin:0 auto;padding:0 1.25rem 4rem}
 
 /* ══ INPUTS ══ */
@@ -99,10 +107,11 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 
 /* ══ HEADER ══ */
 .hdr{
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
-  padding:1.25rem 1.375rem 1.125rem;margin:0 -1.25rem .875rem;
-  background:var(--hdr-bg);border-bottom:1.5px solid var(--bd2);
-  position:relative;box-shadow:var(--sh-lg);overflow:hidden;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  padding:1.25rem 1.5rem 1.125rem;margin:0 -1.25rem 1rem;
+  background:var(--hdr-bg);border-bottom:1px solid var(--bd2);
+  position:relative;overflow:hidden;
+  box-shadow:0 4px 18px rgba(107,122,46,.07);
 }
 /* Tech scanline texture */
 .hdr::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(107,122,46,.012) 3px,rgba(107,122,46,.012) 4px);pointer-events:none;z-index:0}
@@ -114,13 +123,22 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   background-size:200% 100%;
   animation:headerShine 4s ease-in-out infinite;
 }
-.hdr-brand{display:flex;align-items:center;gap:14px;min-width:0}
-.hdr h1{font-size:clamp(16px,3.5vw,22px);font-weight:600;color:var(--dark);font-family:var(--serif);font-style:italic;letter-spacing:.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hdr-sub{font-size:11px;color:var(--cm);margin-top:3px;white-space:nowrap}
-.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:7px;flex-shrink:0}
-.date-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-.date-row input{width:auto;max-width:150px}
+.hdr-brand{display:flex;align-items:center;gap:16px;min-width:0}
+.hdr h1{font-size:clamp(16px,3.5vw,22px);font-weight:600;color:var(--dark);font-family:var(--serif);font-style:italic;letter-spacing:.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.1}
+.hdr-sub{font-size:11.5px;color:var(--cm);margin-top:5px;white-space:nowrap;display:flex;align-items:center;gap:5px;font-weight:500}
+.hdr-sub .pin{color:var(--gold-dark);flex-shrink:0}
+.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0}
+.now-card{display:flex;flex-direction:column;align-items:flex-end;gap:2px;padding:7px 15px;border-radius:16px;background:var(--cc);border:1px solid var(--bd2);box-shadow:0 2px 10px rgba(107,122,46,.06)}
+.now-time{font-size:22px;font-weight:700;letter-spacing:.5px;color:var(--dark);font-variant-numeric:tabular-nums;line-height:1;display:flex;align-items:baseline}
+.now-colon{color:var(--gold);margin:0 1px}
+.now-sec{font-size:11px;font-weight:600;color:var(--cm);margin-left:4px;letter-spacing:.3px}
+.hdr-controls{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.date-row{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.date-lbl{font-size:9.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--cm);font-weight:700;display:flex;align-items:center;gap:4px}
+.date-row input{width:auto;max-width:160px}
 .btn-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.hdr .btn-ol,.hdr .theme-btn{box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.hdr .btn-ol:hover,.hdr .theme-btn:hover{box-shadow:0 4px 10px rgba(107,122,46,.13)}
 
 /* ══ BUTTONS ══ */
 .btn{font-family:var(--font);font-size:12px;font-weight:500;padding:7px 14px;border-radius:20px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:all .18s;border:none}
@@ -147,7 +165,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .tab-btn:hover:not(.active){background:rgba(107,122,46,.08);color:var(--dark)}
 
 /* ══ METRIC CARDS – Glassmorphism ══ */
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-bottom:1.25rem}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-bottom:1.25rem;perspective:1100px}
 .mc{
   background:var(--mc-bg);
   backdrop-filter:blur(16px) saturate(180%);
@@ -156,12 +174,13 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   position:relative;overflow:hidden;
   border:1px solid var(--glass-border);
   border-top:1px solid rgba(255,255,255,.8);
-  box-shadow:0 5px 20px rgba(107,122,46,.1),0 1px 4px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.75);
-  transition:transform .2s,box-shadow .2s;cursor:default;
+  box-shadow:0 10px 26px rgba(107,122,46,.16),0 3px 8px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.8),inset 0 -2px 5px rgba(107,122,46,.05);
+  transition:transform .25s cubic-bezier(.2,.7,.3,1),box-shadow .25s;cursor:default;
+  transform-style:preserve-3d;will-change:transform;
 }
 .mc::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent);pointer-events:none;border-radius:13px 13px 0 0}
 .mc::after{content:'';position:absolute;left:0;top:18%;bottom:18%;width:3.5px;background:linear-gradient(180deg,transparent,var(--gold),transparent);border-radius:0 4px 4px 0}
-.mc:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(107,122,46,.14),0 3px 8px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.85)}
+.mc:hover{transform:translateY(-5px) rotateX(7deg) rotateY(-5deg) scale(1.025);box-shadow:0 26px 46px rgba(107,122,46,.22),0 10px 18px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.9)}
 .mc.cost-card::after{background:linear-gradient(180deg,transparent,var(--orange),transparent)}
 .mc.profit-card::after{background:linear-gradient(180deg,transparent,var(--green),transparent)}
 .mc.ship-card::after{background:linear-gradient(180deg,transparent,var(--indigo),transparent)}
@@ -234,6 +253,9 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
 .abtn{background:none;border:none;cursor:pointer;padding:4px;color:var(--cm);font-size:15px;line-height:1;border-radius:7px;transition:all .15s;min-width:28px;min-height:28px;display:inline-flex;align-items:center;justify-content:center}
 .abtn.e:hover{color:var(--gold-dark);background:var(--gold-pale)}
 .abtn.d:hover{color:var(--red);background:rgba(192,0,0,.08)}
+/* Ô thao tác: đủ rộng & không cắt nút Xoá */
+th.act-h{width:88px}
+td.act{display:flex;gap:4px;padding:4px 6px;overflow:visible;justify-content:center;align-items:center}
 
 /* ══ SHIMMER TABLE LOADING ══ */
 .tbl-skm td{padding:10px 8px}
@@ -347,7 +369,6 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
 .chat-clear:hover{background:rgba(255,255,255,.1);color:#F5EDD4}
 
 /* ══ MISC ══ */
-#clockSvg{flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(26,14,6,.1))}
 #aiCard{border-left:3.5px solid var(--indigo)}
 
 /* ══ RESPONSIVE ══ */
@@ -355,8 +376,12 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
 @media(max-width:600px){
   .wrap{padding:0 .75rem 3rem}.hdr{padding:.875rem .875rem .75rem;margin:0 -.75rem;flex-direction:column;align-items:stretch;gap:8px}
   .hdr-brand>svg{width:52px!important;height:52px!important}.hdr h1{font-size:17px}
-  .hdr-right{flex-direction:row;justify-content:space-between;align-items:center}
-  .date-row input{max-width:130px}#clockSvg{display:none}
+  .hdr-right{align-items:stretch;gap:8px;position:static}
+  .hdr-controls{justify-content:space-between;align-items:flex-end}
+  .hdr-brand{padding-right:82px}
+  .now-card{position:absolute;top:.75rem;right:.875rem;align-self:auto;padding:5px 12px;z-index:2}
+  .now-time{font-size:17px}.now-sec{display:none}
+  .date-row input{max-width:150px}
   .tab-btn{padding:7px 10px;font-size:12px;gap:4px}
   .metrics{grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:1rem}
   .mc{padding:.625rem .75rem;border-radius:10px}.mc-lbl{font-size:9px}.mc-val{font-size:clamp(13px,4.2vw,18px)}
@@ -420,10 +445,7 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
 
 /* ═════ GIAO DIỆN SÁNG (LIGHT MODE) - APPLE STYLE ═════ */
 [data-theme="light"] body {
-  background-image: 
-    linear-gradient(rgba(107, 122, 46, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(107, 122, 46, 0.05) 1px, transparent 1px) !important;
-  background-size: 35px 35px !important;
+  background-image: none !important;
 }
 /* Bóng nổi 3D, thanh lịch, không phát sáng lố */
 [data-theme="light"] .mc:hover {
@@ -486,13 +508,9 @@ tr.trow td{background:rgba(240,226,180,.3);color:#8B2C00;font-weight:700;border-
   box-shadow: 4px 4px 0px rgba(107, 122, 46, 0.2) !important;
 }
 
-/* Thay nền thành lưới Origami */
+/* Nền phẳng, chỉ giữ lớp monogram (body::before) */
 body, [data-theme="light"] body {
-  background-image: 
-    linear-gradient(45deg, var(--dot) 25%, transparent 25%, transparent 75%, var(--dot) 75%, var(--dot)), 
-    linear-gradient(45deg, var(--dot) 25%, transparent 25%, transparent 75%, var(--dot) 75%, var(--dot)) !important;
-  background-size: 20px 20px !important;
-  background-position: 0 0, 10px 10px !important;
+  background-image: none !important;
 }
 /* ══ TĂNG ĐỘ BO TRÒN CHO MỀM MẠI HƠN ══ */
 :root{--rmd:14px;--rlg:20px}
@@ -576,27 +594,25 @@ input,textarea,select{border-radius:14px !important}
         <ellipse cx="-1" cy="-7.5" rx="1.2" ry="2.2" transform="rotate(-15 -1 -7.5)"/>
       </g>
     </svg>
-    <div>
+    <div class="brand-text">
       <h1>Quản lý đơn hàng</h1>
-      <div class="hdr-sub">📍 34C – Ô Chợ Dừa, Hà Nội</div>
+      <div class="hdr-sub"><svg class="pin" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>34C – Ô Chợ Dừa, Hà Nội</div>
     </div>
   </div>
   <div class="hdr-right">
-    <div class="date-row">
-      <label style="font-size:12px;color:var(--cm);white-space:nowrap">Ngày:</label>
-      <input type="date" id="selDate">
-      <svg id="clockSvg" width="44" height="44" viewBox="0 0 46 46">
-        <circle cx="23" cy="23" r="21" fill="var(--cc)" stroke="#6B7A2E" stroke-width="1.5"/>
-        <line id="hHand" x1="23" y1="23" x2="23" y2="11" stroke="#4A5E1C" stroke-width="3" stroke-linecap="round"/>
-        <line id="mHand" x1="23" y1="23" x2="23" y2="6" stroke="#6B7A2E" stroke-width="2" stroke-linecap="round"/>
-        <line id="sHand" x1="23" y1="27" x2="23" y2="5" stroke="#C00000" stroke-width="1" stroke-linecap="round"/>
-        <circle cx="23" cy="23" r="2.5" fill="#4A5E1C"/>
-      </svg>
+    <div class="now-card">
+      <span class="now-time" id="liveTime">--:--</span>
     </div>
-    <div class="btn-row">
-      <button class="theme-btn" id="themeToggle" onclick="toggleTheme()"><i class="ti ti-moon" id="themeIcon"></i><span id="themeTxt">Tối</span></button>
-      <button class="btn btn-ol" onclick="onClickXlsx()"><i class="ti ti-download"></i> <span>Tải Excel</span></button>
-      <button class="btn btn-ol" onclick="refreshCurrentTab()"><i class="ti ti-refresh"></i> <span>Làm mới</span></button>
+    <div class="hdr-controls">
+      <div class="date-row">
+        <label class="date-lbl"><i class="ti ti-calendar-event"></i> Ngày làm việc</label>
+        <input type="date" id="selDate">
+      </div>
+      <div class="btn-row">
+        <button class="theme-btn" id="themeToggle" onclick="toggleTheme()"><i class="ti ti-moon" id="themeIcon"></i><span id="themeTxt">Tối</span></button>
+        <button class="btn btn-ol" onclick="onClickXlsx()"><i class="ti ti-download"></i> <span>Tải Excel</span></button>
+        <button class="btn btn-ol" onclick="refreshCurrentTab()"><i class="ti ti-refresh"></i> <span>Làm mới</span></button>
+      </div>
     </div>
   </div>
 </div>
@@ -670,7 +686,7 @@ input,textarea,select{border-radius:14px !important}
   <div class="tw">
     <table style="min-width:960px">
       <colgroup><col style="width:38px"><col style="width:65px"><col style="width:76px"><col style="width:86px"><col style="width:76px"><col style="width:105px"><col style="width:96px"><col style="width:76px"><col style="width:96px"><col style="width:96px"><col style="width:88px"><col style="width:120px"><col style="width:105px"><col style="width:50px"></colgroup>
-      <thead><tr><th>STT</th><th>Giờ giao</th><th>Size bánh</th><th>Giá bánh</th><th>Giá PK</th><th>Phụ kiện</th><th>Tổng (bánh+PK)</th><th>Giá ship</th><th>Tổng cộng</th><th>Tên khách</th><th>SĐT</th><th>Địa chỉ</th><th>Ghi chú</th><th></th></tr></thead>
+      <thead><tr><th>STT</th><th>Giờ giao</th><th>Size bánh</th><th>Giá bánh</th><th>Giá PK</th><th>Phụ kiện</th><th>Tổng (bánh+PK)</th><th>Giá ship</th><th>Tổng cộng</th><th>Tên khách</th><th>SĐT</th><th>Địa chỉ</th><th>Ghi chú</th><th class="act-h"></th></tr></thead>
       <tbody id="tbody"></tbody><tfoot id="tfoot"></tfoot>
     </table>
   </div>
@@ -742,7 +758,7 @@ input,textarea,select{border-radius:14px !important}
   <div class="tw">
     <table style="min-width:680px">
       <colgroup><col style="width:38px"><col style="width:100px"><col style="width:150px"><col style="width:96px"><col style="width:96px"><col style="width:auto"><col style="width:125px"><col style="width:50px"></colgroup>
-      <thead><tr><th>STT</th><th>Đơn vị nhập</th><th>Tên sản phẩm</th><th>Giá nhập</th><th>Chi phí QC</th><th>Ảnh HĐ</th><th>Ghi chú</th><th></th></tr></thead>
+      <thead><tr><th>STT</th><th>Đơn vị nhập</th><th>Tên sản phẩm</th><th>Giá nhập</th><th>Chi phí QC</th><th>Ảnh HĐ</th><th>Ghi chú</th><th class="act-h"></th></tr></thead>
       <tbody id="costTbody"></tbody><tfoot id="costTfoot"></tfoot>
     </table>
   </div>
@@ -1289,7 +1305,7 @@ function updateFormLock(){const locked=isPast($('selDate').value)&&editId===null
 
 function renderTable(){
   if(!currentOrders.length){$('tbody').innerHTML=`<tr><td colspan="14" class="es"><i class="ti ti-clipboard-list" style="font-size:24px;display:block;margin:0 auto 8px"></i>Chưa có đơn nào</td></tr>`;$('tfoot').innerHTML='';return;}
-  $('tbody').innerHTML=currentOrders.map((o,i)=>{const sum=n(o.cakePrice)+n(o.accPrice),tot=sum+n(o.ship);const isTemp=String(o.id).startsWith('_tmp');return`<tr ${editId===o.id?'class="hi"':''} style="${isTemp?'opacity:.55':''}"><td>${i+1}</td><td>${esc(o.time)}</td><td>${esc(o.size)}</td><td>${fmt(o.cakePrice)}</td><td>${fmt(o.accPrice)}</td><td title="${esc(o.acc)}">${esc(o.acc)}</td><td class="red">${fmt(sum)}</td><td>${fmt(o.ship)}</td><td class="red">${fmt(tot)}</td><td title="${esc(o.name)}">${esc(o.name)}</td><td>${esc(o.phone)}</td><td title="${esc(o.addr)}">${esc(o.addr)}</td><td title="${esc(o.note)}">${esc(o.note)}</td><td style="display:flex;gap:2px;padding:4px 3px">${isTemp?'<span class="sk"></span>':(`<button class="abtn e" onclick="startEdit('${o.id}')"><i class="ti ti-pencil"></i></button><button class="abtn d" onclick="delOrder('${o.id}')"><i class="ti ti-trash"></i></button>`)}</td></tr>`;}).join('');
+  $('tbody').innerHTML=currentOrders.map((o,i)=>{const sum=n(o.cakePrice)+n(o.accPrice),tot=sum+n(o.ship);const isTemp=String(o.id).startsWith('_tmp');return`<tr ${editId===o.id?'class="hi"':''} style="${isTemp?'opacity:.55':''}"><td>${i+1}</td><td>${esc(o.time)}</td><td>${esc(o.size)}</td><td>${fmt(o.cakePrice)}</td><td>${fmt(o.accPrice)}</td><td title="${esc(o.acc)}">${esc(o.acc)}</td><td class="red">${fmt(sum)}</td><td>${fmt(o.ship)}</td><td class="red">${fmt(tot)}</td><td title="${esc(o.name)}">${esc(o.name)}</td><td>${esc(o.phone)}</td><td title="${esc(o.addr)}">${esc(o.addr)}</td><td title="${esc(o.note)}">${esc(o.note)}</td><td class="act">${isTemp?'<span class="sk"></span>':(`<button class="abtn e" onclick="startEdit('${o.id}')"><i class="ti ti-pencil"></i></button><button class="abtn d" onclick="delOrder('${o.id}')"><i class="ti ti-trash"></i></button>`)}</td></tr>`;}).join('');
   const tC=currentOrders.reduce((s,o)=>s+n(o.cakePrice)+n(o.accPrice),0),tS=currentOrders.reduce((s,o)=>s+n(o.ship),0);
   $('tfoot').innerHTML=`<tr class="trow"><td colspan="6" style="text-align:right">TỔNG</td><td>${fmt(tC)}</td><td>${fmt(tS)}</td><td>${fmt(tC+tS)}</td><td colspan="5"></td></tr>`;
 }
@@ -1384,7 +1400,7 @@ function _renderCostTable(){
   $('costTbody').innerHTML=currentCosts.map((c,i)=>{
     const fIds=getFileIds(c.imageUrl);
     const imgCell=fIds.length?fIds.map(fId=>`<img class="img-thumb" src="${driveThumb(fId)}" onclick="openImgViewer('${driveView(fId)}')" onerror="this.style.display='none'" loading="lazy">`).join(''):'–';
-    return`<tr ${editCostId===c.id?'class="hi"':''}><td>${i+1}</td><td title="${esc(c.supplier)}">${esc(c.supplier)||'–'}</td><td title="${esc(c.product)}">${esc(c.product)||'–'}</td><td class="red">${c.price?fmt(c.price):'–'}</td><td>${c.adCost?fmt(c.adCost):'–'}</td><td class="img-cell">${imgCell}</td><td title="${esc(c.note)}">${esc(c.note)||'–'}</td><td style="display:flex;gap:2px;padding:4px 3px"><button class="abtn e" onclick="startCostEdit('${c.id}')"><i class="ti ti-pencil"></i></button><button class="abtn d" onclick="delCost('${c.id}')"><i class="ti ti-trash"></i></button></td></tr>`;
+    return`<tr ${editCostId===c.id?'class="hi"':''}><td>${i+1}</td><td title="${esc(c.supplier)}">${esc(c.supplier)||'–'}</td><td title="${esc(c.product)}">${esc(c.product)||'–'}</td><td class="red">${c.price?fmt(c.price):'–'}</td><td>${c.adCost?fmt(c.adCost):'–'}</td><td class="img-cell">${imgCell}</td><td title="${esc(c.note)}">${esc(c.note)||'–'}</td><td class="act"><button class="abtn e" onclick="startCostEdit('${c.id}')"><i class="ti ti-pencil"></i></button><button class="abtn d" onclick="delCost('${c.id}')"><i class="ti ti-trash"></i></button></td></tr>`;
   }).join('');
   $('costTfoot').innerHTML=`<tr class="trow"><td colspan="3" style="text-align:right">TỔNG</td><td>${fmt(tP)}</td><td>${fmt(tA)}</td><td colspan="3"></td></tr>`;
 }
@@ -1408,11 +1424,11 @@ async function submitCost(){
   api(isEdit ? {action:'updateCost',data:JSON.stringify({id:tempId,cost:costData})} : {action:'addCost',data:JSON.stringify(costData)})
   .then(() => {
      toast('✓ Đã đồng bộ chi phí thành công!');
-     cDel(date); renderCosts();
+     cDel(date); cDel(dateToYM(date)); renderCosts();
   })
   .catch(e => {
      toast('⚠️ Lỗi đồng bộ chi phí: '+e.message, true);
-     cDel(date); renderCosts(); // Tải lại từ server để sửa lỗi hiển thị
+     cDel(date); cDel(dateToYM(date)); renderCosts(); // Tải lại từ server để sửa lỗi hiển thị
   });
 }
 function startCostEdit(id){requireAuth('boss',()=>{
@@ -1431,7 +1447,7 @@ function cancelCostEdit(){
 }
 async function delCost(id){requireAuth('boss',async()=>{
   if(!confirm('Xóa mục chi phí này?'))return;const c=currentCosts.find(x=>x.id===id);
-  try{const r=await api({action:'deleteCost',id,date:$('selDate').value});if(!r.ok)throw new Error(r.error);getFileIds(c?.imageUrl).forEach(fId=>apiPost({action:'deleteImage',fileId:fId}).catch(()=>{}));if(editCostId===id)cancelCostEdit();cDel($('selDate').value);await renderCosts();toast('Đã xóa mục chi phí.');}catch(e){toast('⚠️ '+e.message,true);}
+  try{const r=await api({action:'deleteCost',id,date:$('selDate').value});if(!r.ok)throw new Error(r.error);getFileIds(c?.imageUrl).forEach(fId=>apiPost({action:'deleteImage',fileId:fId}).catch(()=>{}));if(editCostId===id)cancelCostEdit();cDel($('selDate').value);cDel(dateToYM($('selDate').value));await renderCosts();toast('Đã xóa mục chi phí.');}catch(e){toast('⚠️ '+e.message,true);}
 });}
 $('costtoggle').addEventListener('click',()=>{costFormOpen=!costFormOpen;$('costBody').style.display=costFormOpen?'':'none';$('cchev').style.transform=costFormOpen?'':'rotate(-90deg)';});
 $('fixedToggle').addEventListener('click',()=>{fixedBodyOpen=!fixedBodyOpen;$('fixedBody').style.display=fixedBodyOpen?'':'none';$('fixedChev').style.transform=fixedBodyOpen?'':'rotate(-90deg)';});
@@ -1515,15 +1531,19 @@ function setDashMetricsLoading(){
 
 async function loadDash(){
   dashM=parseInt($('dashMonthSel').value);dashY=parseInt($('dashYearSel').value);
-  setDashMetricsLoading();
-  $('dashLoading').style.display='';$('dashChart').style.display='none';
-  if(dashChart){dashChart.destroy();dashChart=null;}
-  $('dashTable').innerHTML='<div class="dash-loading"><span class="sk"></span> Đang tải...</div>';
-  $('btnDashXlsx').style.display='none';$('btnDashPDF').style.display='none';
   const today=todayStr(),days=daysInMonth(dashY,dashM),dates=[];
   for(let d=1;d<=days;d++){const ds=`${dashY}-${pad(dashM)}-${pad(d)}`;if(ds<=today)dates.push(ds);}
-  if(!dates.length){$('dashLoading').textContent='Tháng này chưa có dữ liệu.';return;}
+  if(!dates.length){setDashMetricsLoading();$('dashLoading').style.display='';$('dashChart').style.display='none';if(dashChart){dashChart.destroy();dashChart=null;}$('dashLoading').textContent='Tháng này chưa có dữ liệu.';$('dashTable').innerHTML='';return;}
   const ym=dashM+'_'+dashY;
+  // Cache-first: nếu mọi nguồn đã có sẵn trong cache → hiển thị tức thì, bỏ qua màn "Đang tải" (chống nhấp nháy khi mở lại)
+  const warm=dates.every(d=>cGet(new URLSearchParams({action:'getOrders',date:d}).toString()))&&cGet(new URLSearchParams({action:'getCostsByMonth',yearMonth:ym}).toString())&&cGet(new URLSearchParams({action:'getFixedCosts',yearMonth:ym}).toString());
+  if(!warm){
+    setDashMetricsLoading();
+    $('dashLoading').style.display='';$('dashChart').style.display='none';
+    $('dashTable').innerHTML='<div class="dash-loading"><span class="sk"></span> Đang tải...</div>';
+    $('btnDashXlsx').style.display='none';$('btnDashPDF').style.display='none';
+  }
+  if(dashChart){dashChart.destroy();dashChart=null;}
   try{
     // All 3 data sources fire in parallel with smart caching + dedup
     const[orderResults,costResult,fixedResult]=await Promise.all([
@@ -1537,7 +1557,7 @@ async function loadDash(){
     // Pre-fetch prev month silently for faster next navigation
     if(dashM>1)prefetchMonth(dashY,dashM-1);
     else prefetchMonth(dashY-1,12);
-  }catch(e){$('dashLoading').textContent='⚠️ Lỗi: '+e.message;}
+  }catch(e){$('dashLoading').style.display='';$('dashChart').style.display='none';$('dashLoading').textContent='⚠️ Lỗi: '+e.message;}
 }
 
 function prefetchMonth(y,m){
@@ -1750,8 +1770,8 @@ function chipSend(text){$('cskhInput').value=text;sendCSKH();}
 function clearCSKH(){if(!confirm('Xóa toàn bộ lịch sử cuộc trò chuyện?'))return;cskhHistory=[];$('cskhMsgs').innerHTML=`<div class="chat-msg ai"><div class="chat-av ai"><i class="ti ti-robot"></i></div><div class="chat-bubble">Cuộc trò chuyện mới bắt đầu. Bạn cần tư vấn gì? 😊</div></div>`;}
 
 /* ── CLOCK ── */
-function initClock(){const svg=$('clockSvg');if(!svg)return;const hH=$('hHand');for(let i=0;i<12;i++){const rad=(i*30-90)*Math.PI/180,isMaj=i%3===0,r1=isMaj?15.5:17;const line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1',23+r1*Math.cos(rad));line.setAttribute('y1',23+r1*Math.sin(rad));line.setAttribute('x2',23+19.5*Math.cos(rad));line.setAttribute('y2',23+19.5*Math.sin(rad));line.setAttribute('stroke',isMaj?'#2E1A08':'#B89020');line.setAttribute('stroke-width',isMaj?'2':'1');line.setAttribute('stroke-linecap','round');svg.insertBefore(line,hH);}updateClock();setInterval(updateClock,1000);}
-function updateClock(){const now=new Date(),h=now.getHours()%12,m=now.getMinutes(),s=now.getSeconds();$('hHand').setAttribute('transform',`rotate(${h*30+m*.5},23,23)`);$('mHand').setAttribute('transform',`rotate(${m*6+s*.1},23,23)`);$('sHand').setAttribute('transform',`rotate(${s*6},23,23)`);}
+function initClock(){if(!$('liveTime'))return;updateClock();setInterval(updateClock,1000);}
+function updateClock(){const el=$('liveTime');if(!el)return;const now=new Date();el.innerHTML=`${pad(now.getHours())}<span class="now-colon">:</span>${pad(now.getMinutes())}<span class="now-sec">${pad(now.getSeconds())}</span>`;}
 
 $('selDate').addEventListener('change',()=>{cancelEdit();if(currentTab==='orders')render();else if(currentTab==='costs')renderCosts();});
 
@@ -1993,6 +2013,9 @@ async function analyzeDashboardAI() {
 
   // Start background prefetch of current month after app is ready
   bgPrefetch();
+  // Nạp sẵn thư viện biểu đồ lúc rảnh → Dashboard mở ra là vẽ ngay, không chờ tải Chart.js
+  if('requestIdleCallback' in window)requestIdleCallback(()=>loadChartJS().catch(()=>{}),{timeout:6000});
+  else setTimeout(()=>loadChartJS().catch(()=>{}),4000);
 })();
 </script>
 <script>
@@ -2016,36 +2039,6 @@ if ('serviceWorker' in navigator) {
     }).catch(err => console.log('Lỗi đăng ký Service Worker:', err));
 
     // Ép tải lại trang khi bản mới chiếm quyền
-    let refreshing = false;
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-      if (refreshing) return;
-      refreshing = true;
-      window.location.reload();
-    });
-  });
-}
-</script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').then(reg => {
-      console.log('Đã đăng ký Service Worker thành công!');
-      
-      // Lắng nghe nếu có bản cài đặt mới (bạn vừa đổi version trong sw.js)
-      reg.addEventListener('updatefound', () => {
-        const newWorker = reg.installing;
-        newWorker.addEventListener('statechange', () => {
-          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            // Phát hiện có bản mới! Bắn thông báo bắt nhân viên tải lại
-            if (confirm("✨ Sếp vừa tung ra phiên bản App mới xịn hơn! Bấm OK để cập nhật ngay.")) {
-              window.location.reload();
-            }
-          }
-        });
-      });
-    }).catch(err => console.log('Lỗi đăng ký Service Worker:', err));
-
-    // Lắng nghe sự kiện "chiếm quyền" của bản cập nhật để tự động F5
     let refreshing = false;
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (refreshing) return;
