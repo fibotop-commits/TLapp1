@@ -150,9 +150,18 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .theme-btn:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:var(--sh)}
 
 /* ══ TABS ══ */
+/* Thanh tab DÍNH lên đỉnh khi cuộn (sticky) – nền frosted che nội dung chạy phía sau */
+.tabs-bar{
+  position:sticky;top:0;z-index:50;
+  margin:0 -1.25rem 1.25rem;padding:10px 1.25rem 8px;
+  background:var(--cb);
+  background:color-mix(in srgb,var(--cb) 80%,transparent);
+  -webkit-backdrop-filter:blur(12px) saturate(150%);
+  backdrop-filter:blur(12px) saturate(150%);
+}
 .tabs{
   display:flex;background:var(--tab-bg);border-radius:30px;padding:4px;
-  border:1.5px solid var(--bd);margin-bottom:1.25rem;
+  border:1.5px solid var(--bd);
   flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:2px;
   box-shadow:var(--sh);
 }
@@ -372,9 +381,10 @@ td.act{display:flex;gap:4px;padding:4px 6px;overflow:visible;justify-content:cen
 #aiCard{border-left:3.5px solid var(--indigo)}
 
 /* ══ RESPONSIVE ══ */
-@media(max-width:768px){.wrap{padding:0 1rem 3rem}.hdr{margin:0 -1rem}.metrics{grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:8px}.form-2col{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.wrap{padding:0 1rem 3rem}.hdr{margin:0 -1rem}.tabs-bar{margin-left:-1rem;margin-right:-1rem;padding-left:1rem;padding-right:1rem}.metrics{grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:8px}.form-2col{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){
   .wrap{padding:0 .75rem 3rem}.hdr{padding:.875rem .875rem .75rem;margin:0 -.75rem;flex-direction:column;align-items:stretch;gap:8px}
+  .tabs-bar{margin-left:-.75rem;margin-right:-.75rem;padding-left:.75rem;padding-right:.75rem}
   .hdr-brand>svg{width:52px!important;height:52px!important}.hdr h1{font-size:17px}
   .hdr-right{align-items:stretch;gap:8px;position:static}
   .hdr-controls{justify-content:space-between;align-items:flex-end}
@@ -618,13 +628,15 @@ input,textarea,select{border-radius:14px !important}
 </div>
 
 <!-- TABS -->
+<div class="tabs-bar">
 <div class="tabs">
   <button class="tab-btn active" id="tab-orders-btn" onclick="showTab('orders')"><i class="ti ti-clipboard-list"></i> Đơn hàng</button>
   <button class="tab-btn" id="tab-costs-btn" onclick="showTab('costs')"><i class="ti ti-coins"></i> Chi phí</button>
   <button class="tab-btn" id="tab-dashboard-btn" onclick="showTab('dashboard')"><i class="ti ti-chart-bar"></i> Dashboard</button>
   <button class="tab-btn" id="tab-report-btn" onclick="showTab('report')"><i class="ti ti-report-analytics"></i> Báo cáo</button>
   <button class="tab-btn" id="tab-cskh-btn" onclick="showTab('cskh')"><i class="ti ti-headset"></i> CSKH</button>
-  <button class="tab-btn" id="tab-crm-btn" onclick="showTab('crm')"><i class="ti ti-users"></i> QLKH</button> 
+  <button class="tab-btn" id="tab-crm-btn" onclick="showTab('crm')"><i class="ti ti-users"></i> QLKH</button>
+</div>
 </div>
 
 <!-- ═══════════ TAB: ĐƠN HÀNG ═══════════ -->
