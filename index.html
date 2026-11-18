@@ -1313,7 +1313,7 @@ function setMetricsLoading(){
   ['mCount','mCake','mShip','mTotal'].forEach(id=>mcShimmer($(id)));
 }
 
-function updateFormLock(){const locked=isPast($('selDate').value)&&editId===null;$('pastNotice').style.display=locked?'':'none';$('btnSub').disabled=locked;}
+function updateFormLock(){$('pastNotice').style.display='none';$('btnSub').disabled=false;}
 
 function renderTable(){
   if(!currentOrders.length){$('tbody').innerHTML=`<tr><td colspan="14" class="es"><i class="ti ti-clipboard-list" style="font-size:24px;display:block;margin:0 auto 8px"></i>Chưa có đơn nào</td></tr>`;$('tfoot').innerHTML='';return;}
@@ -1354,7 +1354,6 @@ function getForm(){return{time:$('fTime').value,size:$('fSize').value,cakePrice:
 function setForm(o){$('fTime').value=o.time||'';$('fSize').value=o.size||'';$('fCake').value=o.cakePrice?o.cakePrice/1000:'';$('fAcc').value=o.accPrice?o.accPrice/1000:'';$('fAccDesc').value=o.acc||'';$('fShip').value=o.ship?o.ship/1000:'';$('fName').value=o.name||'';$('fPhone').value=o.phone||'';$('fAddr').value=o.addr||'';$('fNote').value=o.note||'';calc();}
 
 async function submitOrder(){
-  if(isPast($('selDate').value)&&editId===null){toast('Không thể thêm đơn cho ngày đã qua!',true);return;}
   const date=$('selDate').value, o={...getForm(),date};
   const isEdit=editId!==null;
   const tempId = isEdit ? editId : '_tmp_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7); // Tạo ID tạm nếu là đơn mới
